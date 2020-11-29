@@ -16,5 +16,6 @@ User loginUser = (User) session.getAttribute("loginUser");
 <p>
 <%= loginUser.getName() %>さん、ログイン中
 </p>
+<a href="/kokaTweet/Logout">ログアウト</a>
 </body>
 </html>
