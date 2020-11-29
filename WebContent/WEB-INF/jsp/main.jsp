@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.User" %>
+<%@ page import="model.User, model.Tweet, java.util.List" %>
 <%
 // セッションスコープのログインユーザ情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
+%>
+<%
+// アプリケーションスコープに保存されたつぶやきリストを取得
+List<Tweet> tweetList = (List<Tweet>) application.getAttribute("tweetList");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +21,15 @@ User loginUser = (User) session.getAttribute("loginUser");
 <p>
 <%= loginUser.getName() %>さん、ログイン中
 </p>
+
 <a href="/kokaTweet/Logout">ログアウト</a>
+<p><a href="/kokaTweet/Main">更新</a></p>
+<form action="/kokaTweet/Main" method="post">
+<input type="text" name="text"><br>
+<input type="submit" value="つぶやく"><br>
+</form>
+<% for(Tweet tweet : tweetList) { %>
+	<p><%= tweet.getUserName() %> : <%= tweet.getText() %></p>
+<% } %>
 </body>
 </html>
