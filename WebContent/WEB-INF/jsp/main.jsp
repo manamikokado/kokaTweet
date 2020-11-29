@@ -26,7 +26,7 @@ List<Tweet> tweetList = (List<Tweet>) application.getAttribute("tweetList");
 <p><a href="/kokaTweet/Main">更新</a></p>
 <form action="/kokaTweet/Main" method="post">
 <input type="text" name="text"><br>
-<input type="submit" value="つぶやく"><br>
+<input type="submit" value="つぶやく" style="margin-top: 8px"><br>
 </form>
 <% for(Tweet tweet : tweetList) { %>
 	<p><%= tweet.getUserName() %> : <%= tweet.getText() %></p>
