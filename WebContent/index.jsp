@@ -8,5 +8,10 @@
 </head>
 <body>
 <h1>こかついーとへようこそ</h1>
+<form action="/kokaTweet/Login" method="post">
+ユーザ名：<input type="text" name="name"><br>
+パスワード：<input type="password" name="pass"><br>
+<input type="submit" value="ログイン">
+</form>
 </body>
 </html>
