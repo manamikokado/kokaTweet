@@ -8,7 +8,8 @@ User loginUser = (User) session.getAttribute("loginUser");
 <%
 // アプリケーションスコープに保存されたつぶやきリストを取得
 List<Tweet> tweetList = (List<Tweet>) application.getAttribute("tweetList");
-
+// リクエストスコープに保存されたエラーメッセージを取得
+String errorMsg = (String) request.getAttribute("errorMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,9 @@ List<Tweet> tweetList = (List<Tweet>) application.getAttribute("tweetList");
 <input type="text" name="text"><br>
 <input type="submit" value="つぶやく" style="margin-top: 8px"><br>
 </form>
+<% if(errorMsg != null) { %>
+	<p style="background-color: #ff6347; color: #ffffff; padding: 3px;"><%= errorMsg %></p>
+<% } %>
 <% for(Tweet tweet : tweetList) { %>
 	<p><%= tweet.getUserName() %> : <%= tweet.getText() %></p>
 <% } %>
